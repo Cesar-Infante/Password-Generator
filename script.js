@@ -55,18 +55,18 @@ function generatePassword() {
 
   var criteriaSpecial = confirm("Press 'OK' for special characters '!@#$' ");
 
-  // 4. validate the input and concat
+  // 4. validate the input, user choices to add into char variable
   if (criteriaLowerCase) {
-    char = char.concat(lowerLetters)
+    char += lowerLetters
   }
   if (criteriaUpperCase) {
-    char = char.concat(upperLetters)
+    char += upperLetters
   }
   if (criteriaNumeric) {
-    char = char.concat(numbers)
+    char += numbers
   }
   if (criteriaSpecial) {
-    char = char.concat(specialChar)
+    char += specialChar
   }
 
   // if all the criteria is not true alert message will show up
@@ -74,6 +74,14 @@ function generatePassword() {
     alert("Please choose at least one option, re-generate password"); {
     }
   }
-  console.log(passMsg)
-  return passMsg
+
+  // 5. for loop, for vairable i = 0; i is less than  or equal to passMsg(saved user input, will increment by 1)
+  // variable randomNumber = math.floor(rounds down to nearest whole number) math.random(get random number * max of what is given, char.length)
+  // variable password plus or equals to variable char .substring(extracts a part of a string )
+  for (var i = 0; i < passMsg; i++) {
+    var randomNumber = Math.floor(Math.random() * char.length);
+    password += char.substring(randomNumber, randomNumber +1);
+  }
+  console.log(password)
+  return password;
 }
