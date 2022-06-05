@@ -10,7 +10,8 @@ function writePassword() {
   var password = generatePassword(); // there is no generatePassword function 
   var passwordText = document.querySelector("#password"); // this variable targets the password id line 22 on html
 
-  passwordText.value = password; // recieves the value of the generated password and displays it on the screen (placeholder)
+  // recieves the value of the generated password and displays it on the screen (placeholder)
+  passwordText.value = password;
 
 }
 
@@ -18,16 +19,16 @@ function writePassword() {
 // when a user clicks it will call the writePassword function 
 generateBtn.addEventListener("click", writePassword);
 
-// let to reassign values,  once we get an output back from our for loop
-// const is a read only reference, will not change
-let char = ""
-let password = ""
-const lowerLetters = "abcdefghijklmnopqrstuvwxyz"
-const upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const numbers = "0123456789"
-const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-
+// function to generate password
 function generatePassword() {
+
+  // all variables, let for variables later being filled in, const for ones that wont be changed
+  let char = "";
+  let password = "";
+  const lowerLetters = "abcdefghijklmnopqrstuvwxyz";
+  const upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   // 1. prompt the user for the password criteria
   var passMsg = prompt("How many characters will your password include? (8-128)");
 
@@ -40,7 +41,7 @@ function generatePassword() {
       var passMsg = prompt("How many characters will your password include? (8-128)");
     }
   }
-  
+
   // 3. lowercase, uppercase, numbers, special char
   var criteriaLowerCase = confirm("Press 'OK' for lower case letters");
   // console.log(criteriaLowerCase);
@@ -53,5 +54,27 @@ function generatePassword() {
 
   var criteriaSpecial = confirm("Press 'OK' for special characters !@#$");
   // console.log(criteriaSpecial);
+
+  // 4. validate the input
+  if (criteriaLowerCase) {
+    char = char.concat(lowerLetters)
+    console.log(criteriaLowerCase)
+  }
+  if (criteriaUpperCase) {
+    char = char.concat(upperLetters)
+  }
+  if (criteriaNumeric) {
+    char = char.concat(numbers)
+  }
+  if (criteriaSpecial) {
+    char = char.concat(specialChar)
+  }
+  
+  // if all the criteria is not true alert message will show up, prompt message after alert
+  if (!criteriaLowerCase && !criteriaUpperCase && !criteriaNumeric && !criteriaSpecial) {
+    alert("Please choose at least one option"); {
+      var passMsg = prompt("How many characters will your password include?") 
+    }
+  }
 
 }
