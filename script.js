@@ -7,8 +7,12 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 // generatePassword() function will be stored in the variable password
 function writePassword() {
-  var password = generatePassword(); // there is no generatePassword function 
-  var passwordText = document.querySelector("#password"); // this variable targets the password id line 22 on html
+
+  // there is no generatePassword function 
+  var password = generatePassword();
+
+  // this variable targets the password id line 22 on html
+  var passwordText = document.querySelector("#password");
 
   // recieves the value of the generated password and displays it on the screen (placeholder)
   passwordText.value = password;
@@ -43,22 +47,17 @@ function generatePassword() {
   }
 
   // 3. lowercase, uppercase, numbers, special char
-  var criteriaLowerCase = confirm("Press 'OK' for lower case letters");
-  // console.log(criteriaLowerCase);
+  var criteriaLowerCase = confirm("Press 'OK' for lower case letters 'abc' ");
 
-  var criteriaUpperCase = confirm("Press 'OK' for Upper Case letters");
-  // console.log(criteriaUpperCase);
+  var criteriaUpperCase = confirm("Press 'OK' for Upper Case letters 'ABC' ");
 
-  var criteriaNumeric = confirm("Press 'OK' for numbers from 0-9");
-  // console.log(criteriaNumeric);
+  var criteriaNumeric = confirm("Press 'OK' for numbers from '0-9' ");
 
-  var criteriaSpecial = confirm("Press 'OK' for special characters !@#$");
-  // console.log(criteriaSpecial);
+  var criteriaSpecial = confirm("Press 'OK' for special characters '!@#$' ");
 
-  // 4. validate the input
+  // 4. validate the input and concat
   if (criteriaLowerCase) {
     char = char.concat(lowerLetters)
-    console.log(criteriaLowerCase)
   }
   if (criteriaUpperCase) {
     char = char.concat(upperLetters)
@@ -69,12 +68,12 @@ function generatePassword() {
   if (criteriaSpecial) {
     char = char.concat(specialChar)
   }
-  
-  // if all the criteria is not true alert message will show up, prompt message after alert
+
+  // if all the criteria is not true alert message will show up
   if (!criteriaLowerCase && !criteriaUpperCase && !criteriaNumeric && !criteriaSpecial) {
-    alert("Please choose at least one option"); {
-      var passMsg = prompt("How many characters will your password include?") 
+    alert("Please choose at least one option, re-generate password"); {
     }
   }
-
+  console.log(passMsg)
+  return passMsg
 }
