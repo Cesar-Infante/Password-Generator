@@ -118,8 +118,6 @@ button[disabled] {
   overflow: hidden;
 }
 
-@import url(//fonts.googleapis.com/css?family=Lato:300:400);
-
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
